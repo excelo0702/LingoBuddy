@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lingo_buddy/screens/welcome_screen.dart';
 import 'package:lottie/lottie.dart';
 
 import '../main.dart';
@@ -12,7 +13,7 @@ class SplashScreen extends StatelessWidget {
     // Trigger navigation after a delay
     Future.delayed(Duration(seconds: 3), () {
       Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => MyHomePage(title: 'Lingo Buddy',)),
+          MaterialPageRoute(builder: (context) => WelcomeScreen()),
       );
     });
     return Scaffold(
