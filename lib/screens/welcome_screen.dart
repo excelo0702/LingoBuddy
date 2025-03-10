@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lingo_buddy/constants/app_colors.dart';
+import 'package:lingo_buddy/constants/font_sizes.dart';
+import 'package:lingo_buddy/screens/progress_screen.dart';
+
+import 'auth_mobile_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -31,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                 Text(
                   "Welcome",
                   style: TextStyle(
-                    fontSize: 44,
+                    fontSize: FontSizes.xxl,
                     fontWeight: FontWeight.bold,
                     color: AppColors.textPrimary,
                   ),
@@ -39,7 +43,12 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(height: 10),
                 ElevatedButton(
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProgressScreen(), // Navigate to MobileScreen
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.buttonPrimary,
