@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lingo_buddy/screens/progress_screen.dart';
+import 'package:lingo_buddy/services/audio_service.dart';
+import 'package:lottie/lottie.dart';
 
 import '../models/quiz_picture_option.dart';
 import '../widgets/quizWidgets/picture_choice_quiz.dart';
+import '../widgets/quizWidgets/quiz_completed.dart';
 import '../widgets/quizWidgets/quiz_widget.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -16,6 +20,8 @@ class _QuizScreenState extends State<QuizScreen> {
   int currentQuestionIndex = 0;
   late List<QuizWidget> quizQuestions;
   List<QuizWidget> incorrectQuestions = [];
+  bool quizCompleted = false;
+  bool showContinueButton = false;
 
   // Sample questions (In a real app, this could come from an API or database)
 
@@ -93,7 +99,17 @@ class _QuizScreenState extends State<QuizScreen> {
         currentQuestionIndex = 0;
       });
     } else {
+      setState(() {
+        quizCompleted = true;
+      });
       print("Quiz Completed!");
+      AudioService.playSound('sounds/quiz_complete.mp3');
+      Future.delayed(Duration(seconds: 2), () {
+        setState(() {
+          showContinueButton = true;
+        });
+      });
+
       // Optionally, navigate to results screen
     }
   }
@@ -103,7 +119,15 @@ class _QuizScreenState extends State<QuizScreen> {
     return Scaffold(
       backgroundColor: Colors.black, // Match dark theme
       appBar: AppBar(title: Text("Quiz"), backgroundColor: Colors.black),
-      body: Column(
+      body: quizCompleted ?
+      QuizCompleted(onContinue: () {
+        Navigator.push(
+          context,
+            MaterialPageRoute(builder: (context) => ProgressScreen()),
+          );
+        },
+      )
+      : Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

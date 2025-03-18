@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lingo_buddy/screens/welcome_screen.dart';
 import 'package:lottie/lottie.dart';
 
-import '../main.dart';
-
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 

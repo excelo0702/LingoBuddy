@@ -14,18 +14,17 @@ class CorrectAnswerBottomsheet extends StatelessWidget {
     return  Container(
         padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.9), // Dark background like the image
+          color: Colors.black.withOpacity(0.9),
 
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min, // Wrap content
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ First Row: Icon + "Nice! Meaning:"
             Row(
               children: [
-                Icon(Icons.check_circle, color: Colors.green, size: 24), // ✅ Check icon
-                SizedBox(width: 8), // Space between icon and text
+                Icon(Icons.check_circle, color: Colors.green, size: 24),
+                SizedBox(width: 8),
                 Text(
                   "Nice! Meaning:",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.green),
